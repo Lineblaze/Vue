@@ -38,6 +38,10 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
+      <v-text-field class="shrink" hide-details="auto"></v-text-field>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -84,6 +88,12 @@ export default {
       rightDrawer: false,
       title: 'WEB-LAB'
     }
-  }
+  },
+
+  created() {
+    if (this.$store.getters.GET_ARTICLES.length === 0) {
+      this.$store.dispatch("GET_ARTICLES");
+    }
+  },
 }
 </script>
